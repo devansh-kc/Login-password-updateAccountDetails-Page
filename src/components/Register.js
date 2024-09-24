@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Col, Button, Row, Container, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Register() {
   const [formDetails, setFormDetails] = useState({
     FirstName: "",
@@ -14,6 +15,7 @@ function Register() {
       return { ...prevState, [field]: value };
     });
   }
+  const navigate=useNavigate()
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -21,6 +23,9 @@ function Register() {
     e.preventDefault();
 
     localStorage.setItem("FormDetails", JSON.stringify(formDetails));
+    navigate("/updateDetails")
+    
+
   }
 
   return (
